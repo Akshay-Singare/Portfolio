@@ -35,10 +35,10 @@ export const ContactSection: React.FC = () => {
     const subject = encodeURIComponent(formState.subject || `Inquiry from ${formState.name}`);
     const body = encodeURIComponent(`Hi Akshay,\n\nName: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`);
     
-    // Using Gmail Compose URL to force opening in a new browser tab instead of a native app
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${personalInfo.email}&su=${subject}&body=${body}`;
+    // Using mailto to open the default native mail app
+    const mailtoUrl = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
     
-    window.open(gmailUrl, "_blank");
+    window.location.href = mailtoUrl;
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
